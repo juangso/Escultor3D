@@ -21,5 +21,8 @@ class Sculptor {
         void setColor(float r, float g, float b, float a); //define a cor e transparencia atual
         void putVoxel(int x, int y, int z); //faz "isOn = true" e atribui a cor e transparencia atual ao Voxel[x][y][z]   
         void cutVoxel(int x, int y, int z); //faz "isOn = false" ao Voxel[x][y][z]
+        void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
+        void cutBox(int x0, int x1, int y0, int y1, int z0, int z1);
         void writeOFF(char* filename); //grava o arquivo .off
+        
 };
