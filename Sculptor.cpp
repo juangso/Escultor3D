@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
+#include <cmath>
 using namespace std;
 
 
@@ -87,6 +88,79 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     }
 
 };
+
+void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < y; j++)
+        {
+            for (int k = 0; k < z; k++)
+            {
+                if(((pow(i-xcenter,2)) + pow(j-ycenter,2) + pow(k-zcenter,2)) < pow(radius,2)) {
+                    v[i][j][k].r = r;
+                    v[i][j][k].g = g;
+                    v[i][j][k].b = b;
+                    v[i][j][k].a = a;
+                    v[i][j][k].isOn = true;
+                }
+            }
+        }
+    }
+
+};
+
+void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < y; j++)
+        {
+            for (int k = 0; k < z; k++)
+            {
+                if(((pow(i-xcenter,2)) + pow(j-ycenter,2) + pow(k-zcenter,2)) <= pow(radius,2)) {
+                    v[i][j][k].isOn = false;
+                }
+            }
+        }
+    }
+
+};
+
+void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < y; j++)
+        {
+            for (int k = 0; k < z; k++)
+            {
+                if(((pow(i-xcenter,2)/pow(rx,2))+(pow(j-ycenter,2)/pow(ry,2))+(pow(k-zcenter,2)/pow(rz,2))) < 1)  {
+                    v[i][j][k].r = r;
+                    v[i][j][k].g = g;
+                    v[i][j][k].b = b;
+                    v[i][j][k].a = a;
+                    v[i][j][k].isOn = true;
+                }
+            }
+        }
+    }
+
+};
+
+void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < y; j++)
+        {
+            for (int k = 0; k < z; k++)
+            {
+                if(((pow(i-xcenter,2)/pow(rx,2))+(pow(j-ycenter,2)/pow(ry,2))+(pow(k-zcenter,2)/pow(rz,2))) < 1)  {
+                    v[i][j][k].isOn = false;
+                }
+            }
+        }
+    }
+
+};
+
 
 void Sculptor::writeOFF(char* filename){
     int nVoxel = 0; //variavel para armazenar a quant de voxels da figura

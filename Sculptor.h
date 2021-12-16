@@ -23,6 +23,10 @@ class Sculptor {
         void cutVoxel(int x, int y, int z); //faz "isOn = false" ao Voxel[x][y][z]
         void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
         void cutBox(int x0, int x1, int y0, int y1, int z0, int z1);
+        void putSphere(int xcenter, int ycenter, int zcenter, int radius);
+        void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
+        void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
+        void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
         void writeOFF(char* filename); //grava o arquivo .off
         
 };
